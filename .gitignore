@@ -1,0 +1,15 @@
+APIs/__pycache__/
+Covid_exterminator/__pycache__/
+Data_analysis/__pycache__/
+.vscode/
+__pycache__/
+venv_pcc/
+.editorconfig
+pcc.code-workspace
+Data_analysis/.mypy_cache/
+webapp/ll_venv/
+webapp/learning_log/secrets.json
+snippy_chat/snippy_chat/secrets.json
+meal_planner/meal_planner/secrets.json
+pizzeria/pizzeria/secrets.json
+pizzeria/pizzeria_venv/

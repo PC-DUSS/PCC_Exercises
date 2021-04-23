@@ -1,0 +1,21 @@
+1. Do django-admin startproject 'project_name' '.'
+
+2. Do python manage.py migrate
+
+3. Do django-admin startapp 'app_name'
+
+4. Edit project.settings, add the new app to INSTALLED_APPS list
+
+5. Create app_name/templates/'app_name'/ directory to hold html templates
+
+6. Create templates to be used in your website
+
+7. Create 'urls.py' inside the app_name/ directory. Add a Views path('page_name', views.page_name, name=page_name) for the page to be rendered
+
+8. Go to project_name/urls.py file and add an 'include()' in urlpatterns, to include urlpatterns from a new file, named urls.py, but in the app_name/ directory
+
+9. Go to project_name/views.py to create a view function that will render the html.
+	
+	--> def page_name(request): return render(request, 'app_name_subdirectory/page_name.html')
+
+10.
