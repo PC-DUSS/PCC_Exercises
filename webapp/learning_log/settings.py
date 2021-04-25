@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 secret_file = 'learning_log/secrets.json'
 if os.path.exists(secret_file):
-    with open(secret_file, 'r+') as f:
+    with open(secret_file) as f:
         SECRET_KEY = json.load(f)
 else:
     SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
