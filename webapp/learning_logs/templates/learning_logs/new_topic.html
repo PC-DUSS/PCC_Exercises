@@ -1,0 +1,20 @@
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+  <p>Add a new topic:</p>
+
+  <!-- This makes the page send all the data entered in the form back to
+    the new_topic() views function as a POST request. Basically calling itself.
+    We remember that the new_topic() views function has an IF statement
+    checking whether the request is POST or something else (likely GET). When
+    you first access the form, it send you here. When you complete the form,
+    it sends the request back to its views function, but this time with a POST
+    request. The new_topic() views function will then save the form if it is
+    valid, or send you back here if it is invalid.-->
+  <form action="{% url 'learning_logs:new_topic' %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Add topic</button>
+  </form>
+
+{% endblock content %}
