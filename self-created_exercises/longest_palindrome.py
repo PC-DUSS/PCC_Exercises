@@ -14,44 +14,11 @@ def reverse_string(my_string):
 
 
 def is_it_palindrome(my_string):
-    """Determine whether a string is a palindrome or not."""
-    import math
-    first_half = ""
-    second_half = ""
-    tmp = ""
-
-    if len(my_string) % 2 == 0:
-        size_of_half = int(len(my_string) / 2)
-        for i in range(size_of_half):
-            first_half += my_string[i]
-        for i in range(size_of_half, 2*size_of_half):
-            second_half += my_string[i]
-
-        tmp += reverse_string(second_half)
-        tmp += reverse_string(first_half)
-        if my_string == tmp:
-            return True
-        else:
+    for i in range(len(my_string) // 2):
+        if my_string[i] != my_string[-i-1]:
             return False
 
-    else:
-        middle_char = ""
-        halfpoint = math.floor(len(my_string) / 2)
-        for i in range(halfpoint):
-            first_half += my_string[i]
-
-        middle_char += my_string[halfpoint]
-
-        for i in range(halfpoint+1, 2*halfpoint+1):
-            second_half += my_string[i]
-
-        tmp += reverse_string(second_half)
-        tmp += middle_char
-        tmp += reverse_string(first_half)
-        if my_string == tmp:
-            return True
-        else:
-            return False
+    return True
 
 
 def gather_substring_by_range(string, start, finish_exclusive):
