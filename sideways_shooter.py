@@ -129,8 +129,8 @@ class SidewaysShooter():
         Takes:
         - the dimension of available space,
         - the dimension of the object,
-        - the spacing between each object expressed by a coefficient of the base
-            dimension,
+        - the spacing between each object expressed by a coefficient of the
+            base dimension,
         - the outside blank spacing, if any is desired, expressed as a
             coefficient of the base dimension.
 
@@ -371,7 +371,8 @@ class Projectile(pygame.sprite.Sprite):
         self.rect.x = self.x
 
     def draw_projectile(self):
-        pygame.draw.rect(self.screen, self.settings.projectile_color, self.rect)
+        pygame.draw.rect(self.screen, self.settings.projectile_color,
+                         self.rect)
 
 
 class Enemy(pygame.sprite.Sprite):
@@ -441,7 +442,7 @@ class GameStats():
         # If the file does not exist, ignore this command
         except FileNotFoundError:
             pass
-        # If the file is empty, ignore this command
+        # If the file is empty or corrupted, ignore this command
         except json.decoder.JSONDecodeError:
             pass
 
