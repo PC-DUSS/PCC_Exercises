@@ -94,7 +94,6 @@ def visualize_articles(article_dicts):
 
 
 def main():
-
     article_dicts = get_sorted_articles()
     visualize_articles(article_dicts)
 
