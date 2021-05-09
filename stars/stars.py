@@ -1,4 +1,7 @@
-import sys, pygame, random
+import sys
+import pygame
+import random
+
 
 class Canvas():
 
@@ -28,13 +31,13 @@ class Canvas():
 
         # Calculate how many stars fit on the screen with proper spacing.
         available_space_x = self.surface_width
-        num_of_stars = available_space_x // (star_width \
-                                                * self.random_number)
+        num_of_stars = available_space_x // (star_width
+                                             * self.random_number)
 
         # Calculate how many rows fit on the screen with proper spacing.
         available_space_y = self.surface_height
-        num_of_rows = available_space_y // (star_height \
-                                                * self.random_number)
+        num_of_rows = available_space_y // (star_height
+                                            * self.random_number)
 
         for row_number in range(num_of_rows):
             for star_number in range(num_of_stars):
@@ -52,12 +55,10 @@ class Canvas():
         self.stars.draw(self.surface)
         pygame.display.flip()
 
-
     def display_canvas(self):
         while True:
             self._update_canvas()
             self._check_if_exit()
-
 
 
 class Star(pygame.sprite.Sprite):
@@ -68,7 +69,7 @@ class Star(pygame.sprite.Sprite):
         self.surface = canvas.surface
         self.image = pygame.image.load("star.png")
         self.rect = self.image.get_rect()
-        self.rect.x =  self.rect.width * (self.random_number - 1)
+        self.rect.x = self.rect.width * (self.random_number - 1)
         self.rect.y = self.rect.height * (self.random_number - 1)
 
 
@@ -76,6 +77,7 @@ def main():
     random_number = random.randint(1, 5)
     star_canvas = Canvas(random_number)
     star_canvas.display_canvas()
+
 
 if __name__ == "__main__":
     main()

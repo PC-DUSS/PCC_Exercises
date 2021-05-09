@@ -1,4 +1,6 @@
-import sys, pygame
+import sys
+import pygame
+
 
 class Settings():
 
@@ -62,8 +64,8 @@ class Raining():
         space_mult = self.settings.space_between_raindrops_multiplier
 
         # Calculate how many raindrops fit on the screen.
-        return int(self.settings.screen_height // (raindrop.height \
-                                                       * space_mult))
+        return int(self.settings.screen_height // (raindrop.height
+                                                   * space_mult))
 
     def _create_raindrop(self, row_num, column_num):
         # Create an new raindrop for calculation purposes.

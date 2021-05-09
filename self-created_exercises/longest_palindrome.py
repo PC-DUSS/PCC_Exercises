@@ -86,15 +86,14 @@ def palindrome_even_search(my_string):
 def palindrome_odd_search(my_string):
     """Do an odd-number sized search for the longest palindrome inside a given
     string. Return the palindrome as a string if one is found. If none are
-    found, return 'None'."""
+    found, return a list containing an empty string."""
     str_len = len(my_string)
     # Make it into a list, in case multiple palindromes have the same length.
     current_longest_pal = [""]
     # For each index position inside the string.
     for i in range(1, str_len-1):
-        # Iterate to find each possible string starting from the current index
-        # as the string CENTER point...
-        # (since it contains an odd number of characters).
+        # Iterate to find each possible string, starting from the current index
+        # as the string CENTER point (it contains an odd number of characters).
         j = 1
         while((i-j) >= 0 and (i+j) < str_len):
             start_index = i - j

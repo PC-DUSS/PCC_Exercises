@@ -8,22 +8,23 @@ This is the interactive avatar.
 """
 import pygame
 
+
 class BlueSkyDoctor():
     """Class to manage assets for the BlueSky doctor avatar."""
 
     def __init__(self, bs_game):
         """Initialize the assets of the BlueSky doctor avatar and his
         starting position."""
-        #Match the screen for the doctor with the screen for the general game.
+        # Match the screen for the doctor with the screen for the general game.
         self.screen = bs_game.screen
-        #Set the local screen rect to the screen rect of the general game.
+        # Set the local screen rect to the screen rect of the general game.
         self.screen_rect = bs_game.screen.get_rect()
-        #Load the doctor image and get his rect.
-        self.image = pygame.image.load("Covid_exterminator"
+        # Load the doctor image and get his rect.
+        self.image = pygame.image.load("../Covid_exterminator"
                                        "/images/doctor.png"
                                        )
         self.rect = self.image.get_rect()
-        #Start each new doctor avatar at the center of the screen.
+        # Start each new doctor avatar at the center of the screen.
         self.rect.center = self.screen_rect.center
         # Store a decimal value for the doctor avatar's horizontal position.
         self.x = float(self.rect.x)

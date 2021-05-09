@@ -72,7 +72,7 @@ class BlueSkyGame():
         self.screen.fill(self.settings.bg_color)
         # 'Redraw' the doctor avatar at his newly saved location on every pass.
         self.doctor.blitme()
-        # Update the display to show the last 'drawn' screen (from right above).
+        # Update the display to the most up to date surface.
         pygame.display.flip()
 
     def run_game(self):
@@ -88,6 +88,7 @@ def main():
     bs_game = BlueSkyGame()
     bs_game.run_game()
     return 0
+
 
 if __name__ == "__main__":
     main()

@@ -143,8 +143,7 @@ class SidewaysShooter():
                    )
 
     def _calc_current_position_y(self, dimension, spacing_coefficient=1,
-                                 outside_spacing=0, iterator_value=0
-                                 ):
+                                 outside_spacing=0, iterator_value=0):
         '''
         Calculate the current position on y-axis of the enemy currently
         being placed, starting from the top.
@@ -162,8 +161,7 @@ class SidewaysShooter():
             + (outside_spacing * dimension)
 
     def _calc_current_position_x(self, dimension, safe_zone,
-                                 spacing_coefficient=1, iterator_value=0
-                                 ):
+                                 spacing_coefficient=1, iterator_value=0):
         '''
         Calculate the current position on x-axis of the enemy currently
         being placed, starting from the left.
@@ -224,8 +222,7 @@ class SidewaysShooter():
 
     def _check_projectile_collisions(self):
         collisions = pygame.sprite.groupcollide(self.projectiles, self.enemies,
-                                                True, True
-                                                )
+                                                True, True)
         if collisions:
             for each_bullet in collisions:
                 for each_enemy in range(0, len(collisions[each_bullet])):
@@ -263,7 +260,7 @@ class SidewaysShooter():
             self._update_enemies()
         else:
             self._populate_enemies()
-            self.stats.speedup_game()
+            self.settings.speedup_game()
             self.stats.increase_level()
             self.scoreboard.prep_level()
             sleep(0.5)
@@ -297,7 +294,7 @@ class Settings():
         self.projectile_color = (0, 0, 200)
         self.projectile_width = 15
         self.projectile_height = 3
-        self.enemy_drop_speed = 300
+        self.enemy_drop_speed = 100
         self.player_lives = 3
         self.game_speedup_rate = 1.1
 
@@ -326,7 +323,8 @@ class Avatar(pygame.sprite.Sprite):
         self.screen = game_instance.screen
         self.settings = game_instance.settings
         self.screen_rect = game_instance.screen.get_rect()
-        self.image = pygame.image.load('Covid_exterminator/images/doctor.png')
+        self.image = pygame.image.load('../Covid_exterminator/images/'
+                                       'doctor.png')
         self.rect = self.image.get_rect()
         self.rect.midleft = self.screen_rect.midleft
         self.y = float(self.rect.y)
@@ -361,8 +359,7 @@ class Projectile(pygame.sprite.Sprite):
         self.screen = game_instance.screen
         self.settings = game_instance.settings
         self.rect = pygame.Rect(0, 0, self.settings.projectile_width,
-                                self.settings.projectile_height
-                                )
+                                self.settings.projectile_height)
         self.rect.midright = game_instance.avatar.rect.midright
         self.x = float(self.rect.x)
 
@@ -379,7 +376,7 @@ class Enemy(pygame.sprite.Sprite):
 
     def __init__(self, game_instance):
         super().__init__()
-        self.image = pygame.image.load('star.png')
+        self.image = pygame.image.load('../stars/star.png')
         self.screen = game_instance.screen
         self.screen_rect = self.screen.get_rect()
         self.settings = game_instance.settings
@@ -463,8 +460,7 @@ class Button():
 
     def _prep_text(self):
         self.text_img = self.font.render(self.text, True, self.text_color,
-                                         self.bg_color
-                                         )
+                                         self.bg_color)
         self.text_img_rect = self.text_img.get_rect()
         self.text_img_rect.center = self.rect.center
 
@@ -490,8 +486,7 @@ class Scoreboard():
         self.score_str = "{:,}".format(round(self.stats.score))
         self.score_img = self.font.render(self.score_str, True,
                                           self.sb_text_color,
-                                          self.settings.bg_color
-                                          )
+                                          self.settings.bg_color)
         self.score_img_rect = self.score_img.get_rect()
         self.score_img_rect.top = 10
         self.score_img_rect.right = self.screen_rect.right - 10
@@ -499,8 +494,7 @@ class Scoreboard():
     def prep_level(self):
         self.level_img = self.font.render(str(self.stats.level), True,
                                           self.sb_text_color,
-                                          self.settings.bg_color
-                                          )
+                                          self.settings.bg_color)
         self.level_img_rect = self.level_img.get_rect()
         self.level_img_rect.top = self.score_img_rect.bottom + 5
         self.level_img_rect.right = self.score_img_rect.right
@@ -522,8 +516,7 @@ class Scoreboard():
         self.highscore_str = "{:,}".format(round(self.stats.highscore))
         self.highscore_img = self.font.render(self.highscore_str, True,
                                               self.sb_text_color,
-                                              self.settings.bg_color
-                                              )
+                                              self.settings.bg_color)
         self.highscore_img_rect = self.highscore_img.get_rect()
         self.highscore_img_rect.top = 10
         self.highscore_img_rect.centerx = self.screen_rect.centerx
