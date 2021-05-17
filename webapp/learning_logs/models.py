@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -11,6 +12,8 @@ learning_logs, and tell Django to 'migrate' the project.
 
 class Topic(models.Model):
     """A topic the user is learning about."""
+    # Link each topic to its owner (a user). Many-to-one relationship.
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     # Create a small text field for the topic to enter.
     text = models.CharField(max_length=200)
     # Save the date&time the topic was added.

@@ -134,3 +134,10 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# My custom settings.
+
+# This redirects to the default login view, made from the 'login.html' template
+# in the 'users' app.
+LOGIN_URL = 'users:login'

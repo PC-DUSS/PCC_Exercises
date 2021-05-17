@@ -4,5 +4,12 @@
 
 	<p>Welcome to your personal blog!</p>
 	<p>Here, you can enter new blog posts, and edit your existing blog posts.</p>
+	<ul>
+		{% for blog_post in blog_posts %}
+			<li>
+				<a href="{% url 'blogs:post' blog_post.id %}">{{ blog_post }}</a>
+			</li>
+		{% endfor %}
+	</ul>
 
 {% endblock content %}
