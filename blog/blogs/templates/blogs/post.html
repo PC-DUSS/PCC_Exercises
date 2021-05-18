@@ -1,11 +1,15 @@
 {% extends "blogs/base.html" %}
+{% load bootstrap4 %}
+
+{% block page_header %}
+	<h3>{{ post.title }}</h3>
+{% endblock page_header %}
 
 {% block content %}
-
-	<p>{{ post.title }}</p>
 	<p>{{ post.text }}</p>
-	<a href="{% url 'blogs:edit_blog_post' post.id %}">
-		<button>Edit post</button>
-	</a>
-
+	{% buttons %}
+		<button name="submit" class="btn btn-primary">
+			<a href="{% url 'blogs:edit_blog_post' post.id %}" style="color: rgb(250, 250, 250)">Edit Post</a>
+		</button>
+	{% endbuttons %}
 {% endblock content %}

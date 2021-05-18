@@ -1,17 +1,34 @@
 {% extends "blogs/base.html" %}
+{% load bootstrap4 %}
+
+{% block page_header %}
+	<h2>All Posts</h2>
+	<h4>
+		{% buttons %}
+			<button name="new-post" class="btn btn-primary">
+				<a href="{% url 'blogs:new_blog_post' %}" style="color: rgb(250, 250, 250)">New Post</a>
+			</button>
+		{% endbuttons %}
+	</h4>
+{% endblock page_header %}
 
 {% block content %}
-
-	<p><a href="{% url 'blogs:new_blog_post' %}">Add a new post</a></p>
-
-	<ul>
-		{% for blog_post in blog_posts %}
-			<li>
-				<a href="{% url 'blogs:post' blog_post.id %}">{{ blog_post }}</a>
-			</li>
-		{% empty %}
-			<li>You have nothing posted at the moment.</li>
-		{% endfor %}
-	</ul>
-
+	{% for blog_post in blog_posts %}
+		<div class="card mb-3">
+			<h4 class="card-header">
+				<a href="{% url 'blogs:post' blog_post.id %}">{{ blog_post.title }}</a>
+				<small>{{ blog_post.date_added|date:'M d, Y H:i' }}</small>
+				<small>
+					<small>
+						<a href="{% url 'blogs:edit_blog_post' blog_post.id %}">Edit Post</a>
+					</small>
+				</small>
+			</h4>
+			<div class="card-body">
+				{{ blog_post.text|slice:":50" }}...
+			</div>
+		</div>
+	{% empty %}
+		<p>You have nothing posted at the moment.</p>
+	{% endfor %}
 {%endblock content%}

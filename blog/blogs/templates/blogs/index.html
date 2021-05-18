@@ -1,15 +1,9 @@
 {% extends "blogs/base.html" %}
 
-{% block content %}
-
-	<p>Welcome to your personal blog!</p>
-	<p>Here, you can enter new blog posts, and edit your existing blog posts.</p>
-	<ul>
-		{% for blog_post in blog_posts %}
-			<li>
-				<a href="{% url 'blogs:post' blog_post.id %}">{{ blog_post }}</a>
-			</li>
-		{% endfor %}
-	</ul>
-
-{% endblock content %}
+{% block page_header %}
+	<div class="jumbotron">
+		<h1 class="display-3">Track your learning.</h1>
+		<p class="lead">Make your own Blog and allow others to contribute to it.</p>
+		<a href="{% url 'users:register' %}" class="btn btn-primary btn-lg">Register &raquo;</a>
+	</div>
+{% endblock page_header %}
