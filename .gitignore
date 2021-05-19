@@ -9,6 +9,8 @@ pcc.code-workspace
 Data_analysis/.mypy_cache/
 webapp/ll_venv/
 webapp/learning_log/secrets.json
+blog/venv_blog/
+blog/mysite/secrets.json
 snippy_chat/snippy_chat/secrets.json
 meal_planner/meal_planner/secrets.json
 pizzeria/pizzeria/secrets.json
