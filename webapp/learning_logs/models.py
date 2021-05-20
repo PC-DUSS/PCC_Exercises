@@ -14,6 +14,8 @@ class Topic(models.Model):
     """A topic the user is learning about."""
     # Link each topic to its owner (a user). Many-to-one relationship.
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    # Give user the choice if the topic is to be public insead of private.
+    public = models.BooleanField(default=False)
     # Create a small text field for the topic to enter.
     text = models.CharField(max_length=200)
     # Save the date&time the topic was added.

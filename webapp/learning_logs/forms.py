@@ -6,9 +6,8 @@ class TopicForm(forms.ModelForm):
     """Form for users to fill out information on Topics"""
     class Meta:
         model = Topic
-        fields = ['text']
-        # This tells Django not to give a label to the 'text' field.
-        labels = {'text': ''}
+        fields = ['text', 'public']
+        labels = {'text': '', 'public': 'Set Topic to public?'}
 
 
 class EntryForm(forms.ModelForm):

@@ -16,7 +16,15 @@ def index(request):
 @login_required
 def topics(request):
     """Page to display all available topics."""
-    topics = Topic.objects.filter(owner=request.user).order_by('date_added')
+    tmp = []
+    tmp.extend(list(
+        Topic.objects.filter(owner=request.user).order_by('date_added')))
+    topics = tmp
+    tmp = Topic.objects.order_by('date_added')
+    for each_topic in tmp:
+        if each_topic.public and each_topic not in topics:
+            topics.append(each_topic)
+
     context = {'topics': topics}
     return render(request, 'learning_logs/topics.html', context)
 
@@ -25,8 +33,10 @@ def topics(request):
 def topic(request, topic_id):
     """Page to display one specific topic and its entries."""
     topic = get_object_or_404(Topic, id=topic_id)
-    # Make sure only the owner can view his topics and no one else.
-    check_owner(topic.owner, request.user)
+    # Make sure only the owner can view his topics, unless it is public.
+    if not topic.public:
+        check_owner(topic.owner, request.user)
+
     entries = topic.entry_set.order_by('-date_added')
     context = {'topic': topic, 'entries': entries}
     return render(request, 'learning_logs/topic.html', context)
@@ -62,7 +72,9 @@ def new_topic(request):
 def new_entry(request, topic_id):
     """Add a new entry for a specific topic."""
     topic = get_object_or_404(Topic, id=topic_id)
-    check_owner(topic.owner, request.user)
+    if not topic.public:
+        check_owner(topic.owner, request.user)
+
     if request.method != 'POST':
         # If form is empty or invalid, create a new blank EntryForm...
         form = EntryForm()
@@ -93,7 +105,9 @@ def edit_entry(request, entry_id):
     modified text into the database."""
     entry = get_object_or_404(Entry, id=entry_id)
     topic = entry.topic
-    check_owner(topic.owner, request.user)
+    if not topic.public:
+        check_owner(topic.owner, request.user)
+
     if request.method != "POST":
         # Initial request, pre-fill the form with the current entry.
         form = EntryForm(instance=entry)
