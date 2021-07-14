@@ -15,3 +15,7 @@ snippy_chat/snippy_chat/secrets.json
 meal_planner/meal_planner/secrets.json
 pizzeria/pizzeria/secrets.json
 pizzeria/pizzeria_venv/
+**/*~
+**/*.pyc
+**/#*
+**/nohup.out

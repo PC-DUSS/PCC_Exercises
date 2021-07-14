@@ -7,10 +7,10 @@ Covid Exterminator, a 2D shooting game made while completing
 
 Main module.
 """
-import pygame
 import sys
 from time import sleep
 import json
+import pygame
 
 from button import Button
 from bullet import Bullet
@@ -340,6 +340,7 @@ def main():
     sample_game_instance.run_game()
 
     return 0
+
 
 if __name__ == "__main__":
     main()

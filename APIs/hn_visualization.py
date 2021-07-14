@@ -34,10 +34,10 @@ def get_sorted_articles():
 
         # Build a dictionary for each response.
         submission_dict = {
-                'title': response_dict['title'],
-                'hn_link': 'http://news.ycombinator.com/'
-                           f"item?id={submission_id}",
-                }
+            'title': response_dict['title'],
+            'hn_link': 'http://news.ycombinator.com/'
+            f"item?id={submission_id}",
+        }
         # Attempt to save the number of comments for each article.
         try:
             submission_dict['comments'] = response_dict['descendants']
